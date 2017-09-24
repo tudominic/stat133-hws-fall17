@@ -1,0 +1,198 @@
+---
+title: "hw01-dominic-tu.rmd"
+author: "Dominic Tu"
+date: "9/18/2017"
+output: github_document
+---
+```{r, echo=FALSE}
+# disable the formatting of numbers.
+knitr::knit_hooks$set(inline = as.character)
+```
+
+```{r}
+github <- 'https://github.com/ucb-stat133/stat133-hws-fall17/'
+repo <- 'raw/master/warmup02/data/nba2017-salary-points.RData'
+download.file(
+  url = paste0(github, repo),
+  destfile = "nba2017-salary-points.RData")
+load("nba2017-salary-points.Rdata")
+
+```
+Problem 1
+---------
+```{r}
+salary_million = round(salary / 1000000, digit = 2)
+salary_million
+
+experience_0 = replace(experience, experience == "R", 0)
+experience_num = as.numeric(experience_0)
+experience_num
+
+library(plyr)
+position_new = revalue(position, c("C" = "center", "SF" = "small_fwd", "PF" = "power_fwd", "SG" = "shoot_guard", "PG" = "point_guard"))
+position_new
+
+table(position_new)
+
+```
+Problem 2
+---------
+```{r}
+plot(points, salary/1e6, col = "red", xlab = "Points", ylab = "Salary", cex = .5, pch = 5, main = "Scatterplot of Points and Salary")
+```
+
+Problem 3
+---------
+```{r}
+# number of individuals 
+n = 441
+
+# mean of variable X (points)
+mean_x = sum(points)/n
+mean_x
+
+# mean of variable Y (salary)
+mean_y = sum(salary_million)/n
+mean_y
+
+# var(X): variance of X
+var_x = sum((points - mean_x)^2)/(n-1)
+var_x
+
+# var(Y): variance of y
+var_y = sum((salary_million - mean_y)^2)/(n-1)
+var_y
+
+# sd(X): standard deviation of X
+sd_x = sqrt(var_x)
+sd_x
+
+#sd(Y): standard deviation of Y
+sd_y = sqrt(var_y)
+sd_y
+
+#cov(X,Y): covariance between X and Y
+cov_xy = sum((points - mean_x) * (salary_million - mean_y)) / (n - 1)
+cov_xy
+
+#cor(X,Y): correlation between X  and Y
+cor_xy = cov_xy/(sd_x * sd_y)
+cor_xy
+
+cor(points, salary)
+```
+Problem 4 
+--------
+```{r}
+b1 = round(cor_xy * (sd_y / sd_x), digit = 3)
+b1
+b0 = round(mean_y - (b1 * mean_x), digit = 3)
+b0
+Y = b0 + b1 * points
+summary(Y)
+
+Y_0 = b0 + b1 * 0
+Y_100 = b0 + b1 * 100
+Y_500 = b0 + b1 * 500
+Y_1000 = b0 + b1 * 1000
+Y_5000 = b0 + b1 * 2000
+```
+the regression equation: 
+
+> Y = `r b0` + `r b1`X , where X equals   salary
+
+interpret the slope:
+
+> The slope coefficient `r b1` represents the the rate of change of salary at any given number of points the players score
+
+interpret the intercept:
+
+> The intercept term `r b0` represents the average income when a playe scores 0 points 
+
+salary prediction:
+
+- 0 points   : `r Y_0`
+- 100 points : `r Y_100`
+- 500 points : `r Y_500`
+- 1000 points: `r Y_1000`
+- 2000 points: `r Y_5000`
+
+Problem 5
+---------
+```{r}
+plot(points, salary_million, col = "grey", xlab = "Points", ylab = "Salary (in millions)", cex = .5, pch = 1, main = "Regression and Lowess Lines")
+lines(lowess(points, salary_million), col = "red")
+abline(b0, b1, col = "blue", lwd = 1.5)
+text(2300, 30, "lowess", col = "red")
+text(2300, 17, "regression", col = "blue")
+
+```
+
+Problem 6
+--------
+```{r}
+ei = salary_million - Y
+ei
+rss = sum(ei^2)
+rss
+tss = sum((salary_million - mean_y)^2)
+tss
+cod_r2 = 1 - (rss/tss)
+cod_r2
+summary(ei)
+
+
+```
+Problem 7 
+---------
+```{r}
+plot(experience_num, salary_million, main = "Scatterplot with lowess smooth", xlab = "Years of Experience", ylab = "Salary (in millions)")
+lines(lowess(experience_num, salary_million), col = "red")
+
+library(scatterplot3d)
+scatterplot3d(points, experience_num, salary_million, zlab = "salary", ylab = "experience", main = "3D Scatterplot", cex.axis = .6)
+
+boxplot(salary_million ~ position_new, xlab = "position", ylab = "salary (in millions)")
+
+```
+
+Plot description:
+
+- The scatterplot of Years-of-Experience and Salary shows the relationship of salary to an individual's experience. the lowess curve shows that salary increases to about 7 million as the player gain more experience. Once players have been in the league for about 6-7 years years, there salary is optimized.  
+
+- The 3D Scatterplot shows the relationship between salary, points, and experience. We have learned that points and salary have a positive correlation. Experience also have a positive correlation with points and salary. The more points and experience a play have, the higher their salary will be. 
+
+- The boxplot shows the relationship between salary and position. Center's salary ranges greatly and seems to have the highest median income between all position. Point guards and shooting guards have the lowest median income because there might be a surplus of guards. However, in all position besides center, there are outlying salary from the elite players, which are represented by the circles above the respective position. 
+
+Scatterplots:
+
+- Experience seems to be related with salary. Once players achieve 5 years of experience, we see that salary are optimized. After 10 years of experience, salary tops off and eventually lowers as they stay in the NBA. 
+
+Boxplot:
+
+- The boxplot does not show a clear distinction between position and salary. Centers seems to have a bigger range and higher median, which might be cause by the shortage of centers and tall players. Although the guards have low medians and seem to have lower ranges, players are able to earn high income. I think this is due to the surplus of gaurds. Unexpectedly, fowards are between guards and centers. However, median income are around the same between all positions. 
+
+Problem 8
+---------
+- I think replacing the "C" to "center"" was quite difficult even though we saw it in class
+
+- Ploting points were quite easy
+
+- Git is still confusing, but I am learning. I think once I have more experience I will be fine
+
+- It was confusing trying to push the file onto github
+
+- No, I just used the internet as references and help
+
+- 3hrs 
+
+- the most time consuming part was the figuring out how to replace C to center
+
+- I grasped everything 
+
+- git pushing 
+
+- i like looking at all the NBA data. 
+
+
+
