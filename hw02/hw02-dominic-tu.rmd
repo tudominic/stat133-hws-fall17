@@ -1,0 +1,103 @@
+---
+title: "hw02-dominic-tu.rmd"
+author: "Dominic Tu"
+date: "9/28/2017"
+output: github_document
+---
+Problem 1 
+---------
+```{r}
+#inside hw02 data file 
+```
+Problem 2
+--------
+```{r}
+library(dplyr)
+dat = read.csv('nba2017-player-statistics.csv')
+dat
+str(dat)
+dat = mutate(dat, 
+             Player = as.character(Player),
+             Team = as.character(Team),
+             Experience = as.character(Experience))
+
+library(readr)
+dat2 = read_csv('nba2017-player-statistics.csv')
+dat2
+str(dat2)
+dat2 = mutate(dat2, Position = as.factor(Position))
+
+```
+Problem 3
+-------
+```{r}
+#library(plyr)
+dat$Experience = replace(dat$Experience, dat$Experience ==  "R", 0)
+dat$Experience = as.integer(dat$Experience)
+dat
+```
+Problem 4
+--------
+```{r}
+dat = mutate(dat, 
+             Missed_FG = dat$FGA - dat$FGM, 
+             Missed_FT = dat$FTA - dat$FTM,
+             PTS = dat$FTM + 2*dat$Points2 + 3*dat$Points3,
+             REB = dat$OREB + dat$DREB, 
+             MPG = dat$MIN / dat$GP)
+dat = mutate(dat, 
+             EFF = (dat$PTS + dat$REB + dat$AST + dat$STL + dat$BLK - dat$Missed_FG - dat$Missed_FT - dat$TO) / dat$GP)
+dat
+length(dat$EFF)
+summary(dat$EFF)
+
+arrange(select(dat, Player, Team, Salary, EFF),
+        desc(EFF))
+filter(dat, EFF < 0)
+
+PTS = cor(dat$EFF, dat$PTS)
+REB = cor(dat$EFF, dat$REB)
+AST = cor(dat$EFF, dat$AST)
+STL = cor(dat$EFF, dat$STL)
+BLK = cor(dat$EFF, dat$BLK)
+Missed_FG = cor(dat$EFF, dat$Missed_FG)
+Missed_FT = cor(dat$EFF, dat$Missed_FT)
+TO = cor(dat$EFF, dat$TO)
+GP = cor(dat$EFF, dat$GP)
+
+correlation = c(PTS = cor(dat$EFF, dat$PTS), 
+                REB = cor(dat$EFF, dat$REB), 
+                AST = cor(dat$EFF, dat$AST),
+                STL = cor(dat$EFF, dat$STL),
+                BLK = cor(dat$EFF, dat$BLK),
+                Missed_FG = -cor(dat$EFF, dat$Missed_FG),
+                Missed_FT = -cor(dat$EFF, dat$Missed_FT),
+                TO = -cor(dat$EFF, dat$TO),
+                GP = cor(dat$EFF, dat$GP))
+sorted_cor = sort(correlation, decreasing = TRUE)
+barplot(sorted_cor, main = 'Correlations between Player Stats and EFF')
+```
+Problem 5
+--------
+```{r}
+plot(dat$EFF, dat$Salary, cex = .8, xlab = "Efficiency", ylab = "Salary (in millions)")
+lines(lowess(dat$EFF, dat$Salary), col = 'red')
+cor(dat$EFF, dat$Salary)
+#There is a positive correlation between players' efficiency and their respective salary. A higher players' efficiency leads to a higher salary.
+
+player2 = dat[dat$MPG >= 20, ]
+player2
+plot(player2$EFF, player2$Salary, ylab = "Salary", xlab = "Efficiency")
+lines(lowess(dat$EFF, dat$Salary), col = 'red')
+cor(player2$EFF, player2$Salary)
+
+#There is less of a correlation between efficiency and salary in "more established players". Once a player has more experience, their salary has a lessen correlation to efficiency.  
+````
+Problem 6
+--------
+#Comments and Reflection 
+
+> This project was more straight forward than hw01. We saw a lot of the functions and task from labs. The hardest part of the assignment was making sure objects were found. The HW took me about 3 hours. I most time consuming part was problem 4. The most frustating part was knitting the file to find that an object is not found. Overall, I enjoyed learning more about the NBA and breaking it down through a statistical approach. 
+
+
+
