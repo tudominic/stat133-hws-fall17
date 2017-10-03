@@ -7,6 +7,10 @@ This is main sources (see for more information):: www.basketball-reference.com
 
 sample link for the data source of a give team (e.g Warriors): https://www.basketball-reference.com/teams/GSW/2017.html
 
+- The data is the statistics of NBA player from the general information to numbers of points scored
+- numbers of row: 441
+- numbers of column: 24
+
 Player: first and last names of player
 Team: 3-letter team abbreviation
 Position: player's position
