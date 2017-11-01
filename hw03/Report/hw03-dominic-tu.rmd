@@ -10,7 +10,7 @@ library(readr)
 library(dplyr)
 library(ggplot2)
 library(knitr)
-render_html()
+rmarkdown::render("hw03-dominic-tu.rmd")
 ````
 ##Basic Rankings
 ```{r}
