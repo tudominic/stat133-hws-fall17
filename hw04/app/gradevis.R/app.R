@@ -66,9 +66,9 @@ server <- function(input, output) {
       ggvis(x = var1, fill := "#ef623b") %>% 
       add_axis("y", title = "frequency")
   })
-  
   vis_barchart %>% bind_shiny("barchart")
-   output$distPlot <- renderPlot({
+   
+  output$distPlot <- renderPlot({
       # generate bins based on input$bins from ui.R
       x    <- dat[, input$select] 
       if (input$scale == 1) {
@@ -86,6 +86,16 @@ server <- function(input, output) {
      fileText <- paste(readLines(("../output/Homework-stats.txt")))
      fileText
    })
+   
+   vis_histogram <- reactive({
+     var2 <- prop("x", as.symbol(input$select))
+     
+     dat %>% 
+       ggvis(x = var2, fill := "#abafb5") %>% 
+       layer_histograms(stroke := 'white',
+                        width = input$bins)
+   })
+   vis_histogram %>% bind_shiny("histogram")
 }
 
 # Run the application 
