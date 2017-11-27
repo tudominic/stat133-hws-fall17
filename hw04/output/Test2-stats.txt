@@ -1,0 +1,14 @@
+ num [1:334] 100 83 61 64.5 18 79 76.5 71 82 78.5 ...
+[1] "EX2"
+   minimum          :    12.6000 
+ percent10          :    41.0850 
+ quartile1          :    56.7000 
+    median          :    66.6000 
+      mean          :    63.9903 
+ quartile3          :    75.1500 
+ percent90          :    80.4150 
+   maximum          :    90.0000 
+     range          :    77.4000 
+     stdev          :    15.7235 
+   missing          :     0.0000 
+NULL

@@ -1,0 +1,66 @@
+ num [1:334] 100 92.2 63 73.5 30.6 ...
+[1] "Quiz11"
+   minimum          :     0.0000 
+ percent10          :    50.0000 
+ quartile1          :    66.6667 
+    median          :    83.3333 
+      mean          :    78.5429 
+ quartile3          :    91.6667 
+ percent90          :   100.0000 
+   maximum          :   100.0000 
+     range          :   100.0000 
+     stdev          :    19.1697 
+   missing          :     0.0000 
+NULL
+[1] "Quiz12"
+   minimum          :     0.0000 
+ percent10          :    33.3333 
+ quartile1          :    55.5556 
+    median          :    72.2222 
+      mean          :    67.7977 
+ quartile3          :    88.8889 
+ percent90          :   100.0000 
+   maximum          :   100.0000 
+     range          :   100.0000 
+     stdev          :    26.0297 
+   missing          :     0.0000 
+NULL
+[1] "Quiz13"
+   minimum          :     0.0000 
+ percent10          :    25.0000 
+ quartile1          :    50.0000 
+    median          :    67.5000 
+      mean          :    61.4371 
+ quartile3          :    80.0000 
+ percent90          :    90.0000 
+   maximum          :   100.0000 
+     range          :   100.0000 
+     stdev          :    25.1965 
+   missing          :     0.0000 
+NULL
+[1] "Quiz14"
+   minimum          :     0.0000 
+ percent10          :    35.0000 
+ quartile1          :    66.2500 
+    median          :    85.0000 
+      mean          :    75.3144 
+ quartile3          :    95.0000 
+ percent90          :   100.0000 
+   maximum          :   100.0000 
+     range          :   100.0000 
+     stdev          :    27.6367 
+   missing          :     0.0000 
+NULL
+[1] "Quiz20"
+   minimum          :    13.8889 
+ percent10          :    55.2500 
+ quartile1          :    69.5833 
+    median          :    81.8056 
+      mean          :    77.8643 
+ quartile3          :    90.1852 
+ percent90          :    96.0741 
+   maximum          :   100.0000 
+     range          :    86.1111 
+     stdev          :    17.1317 
+   missing          :     0.0000 
+NULL

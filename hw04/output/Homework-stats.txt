@@ -1,0 +1,131 @@
+ num [1:334] 100 97.5 77.6 97.8 25.4 ...
+[1] "Column1"
+   minimum          :     0.0000 
+ percent10          :    60.0000 
+ quartile1          :    74.2500 
+    median          :    85.0000 
+      mean          :    79.2380 
+ quartile3          :    92.5000 
+ percent90          :    95.0000 
+   maximum          :   100.0000 
+     range          :   100.0000 
+     stdev          :    20.5715 
+   missing          :     0.0000 
+NULL
+[1] "Column2"
+   minimum          :     0.0000 
+ percent10          :    57.1500 
+ quartile1          :    77.5000 
+    median          :    92.5000 
+      mean          :    82.9506 
+ quartile3          :   100.0000 
+ percent90          :   100.0000 
+   maximum          :   100.0000 
+     range          :   100.0000 
+     stdev          :    26.0491 
+   missing          :     0.0000 
+NULL
+[1] "Column3"
+   minimum          :     0.0000 
+ percent10          :    72.5000 
+ quartile1          :    85.6250 
+    median          :    95.0000 
+      mean          :    88.0027 
+ quartile3          :   100.0000 
+ percent90          :   100.0000 
+   maximum          :   100.0000 
+     range          :   100.0000 
+     stdev          :    21.2881 
+   missing          :     0.0000 
+NULL
+[1] "Column4"
+   minimum          :     0.0000 
+ percent10          :    43.2500 
+ quartile1          :    70.0000 
+    median          :    90.0000 
+      mean          :    79.0299 
+ quartile3          :   100.0000 
+ percent90          :   100.0000 
+   maximum          :   100.0000 
+     range          :   100.0000 
+     stdev          :    27.5240 
+   missing          :     0.0000 
+NULL
+[1] "Column5"
+   minimum          :     0.0000 
+ percent10          :    65.0000 
+ quartile1          :    90.0000 
+    median          :    95.0000 
+      mean          :    86.8862 
+ quartile3          :   100.0000 
+ percent90          :   100.0000 
+   maximum          :   100.0000 
+     range          :   100.0000 
+     stdev          :    25.2918 
+   missing          :     0.0000 
+NULL
+[1] "Column6"
+   minimum          :     0.0000 
+ percent10          :    51.2000 
+ quartile1          :    81.2500 
+    median          :    93.0000 
+      mean          :    82.4581 
+ quartile3          :    98.0000 
+ percent90          :    99.7000 
+   maximum          :   100.0000 
+     range          :   100.0000 
+     stdev          :    27.9369 
+   missing          :     0.0000 
+NULL
+[1] "Column7"
+   minimum          :     0.0000 
+ percent10          :     0.0000 
+ quartile1          :    77.0000 
+    median          :    90.0000 
+      mean          :    78.7156 
+ quartile3          :   100.0000 
+ percent90          :   100.0000 
+   maximum          :   100.0000 
+     range          :   100.0000 
+     stdev          :    30.4254 
+   missing          :     0.0000 
+NULL
+[1] "Column8"
+   minimum          :     0.0000 
+ percent10          :    48.2500 
+ quartile1          :    80.0000 
+    median          :    90.0000 
+      mean          :    80.6692 
+ quartile3          :   100.0000 
+ percent90          :   100.0000 
+   maximum          :   100.0000 
+     range          :   100.0000 
+     stdev          :    27.7070 
+   missing          :     0.0000 
+NULL
+[1] "Column9"
+   minimum          :     0.0000 
+ percent10          :    55.7500 
+ quartile1          :    80.0000 
+    median          :    85.0000 
+      mean          :    81.1781 
+ quartile3          :   100.0000 
+ percent90          :   100.0000 
+   maximum          :   100.0000 
+     range          :   100.0000 
+     stdev          :    26.4107 
+   missing          :     0.0000 
+NULL
+[1] "Column19"
+   minimum          :     5.3125 
+ percent10          :    66.5000 
+ quartile1          :    83.8906 
+    median          :    91.5938 
+      mean          :    86.3590 
+ quartile3          :    96.1719 
+ percent90          :    97.9625 
+   maximum          :   100.0000 
+     range          :    94.6875 
+     stdev          :    15.4650 
+   missing          :     0.0000 
+NULL
